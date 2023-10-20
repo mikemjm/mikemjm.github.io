@@ -4,7 +4,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-# About
 
 Welcome to my little place on the internet.
 
