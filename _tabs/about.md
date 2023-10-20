@@ -1,9 +1,3 @@
----
-layout: page
-icon: fas fa-info-circle
-order: 4
----
-
 Welcome to my little place on the internet.
 
 I started this blog early 2022 in hopes of sharing my adventures with tinkering and exploring all types of devices, how they work, and what role they may play in our daily lives.
