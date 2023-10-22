@@ -21,7 +21,7 @@ Parts Needed
 
 #### The Plan
 
-For this project I used an old Raspberry Pi Zero that was just collecting dust, loaded it with the latest version of Raspberry Pi OS, then looked for resources on how to accomplish this task. I found very helpful instructions on Jeff Thompson’s Blog about the software required. I followed his steps to get started and then added some additional features that gave me some additional security.
+For this project I used an old Raspberry Pi Zero that was just collecting dust, loaded it with the latest version of Raspberry Pi OS, then looked for resources on how to accomplish this task. I found very helpful instructions on [Jeff Thompson’s Blog](https://www.jeffreythompson.org/blog/2020/04/29/build-an-airplay-receiver-using-raspberry-pi/) about the software required. I followed his steps to get started and then added some additional features that gave me some additional security.
 
 Since I live in an apartment complex, having a Pi setup and listening for Bluetooth connections all the time isn’t very secure. There needed to be an easy way to turn off and on the service to prevent unknowns from connecting to the device. To do this we will be taking advantage of the Pi’s GPIO pins.
 
