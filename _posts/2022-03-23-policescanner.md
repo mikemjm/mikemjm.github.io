@@ -24,13 +24,13 @@ The scanner came with it’s own 5VDC power supply, which I had plugged into a p
 
 ![usb_connector](usb_barrel_connector.jpg)
 
-### Setting Up the Pi
+#### Setting Up the Pi
 
 For this to work I needed to be able to use Audacity’s GUI to manage recordings. To make it even easier I could even manage the recordings remotely via VNC. This meant I needed to install the version of Raspbian that came with a desktop. You can find it on the official Raspberry Pi OS download page. After booting up the Pi there are some settings we need to make. VNC access is not active by default and needs to be enabled via the ‘raspi-config’. It would also be a good idea to enable SSH at the same time to make remote management even easier. You can connect to the Pi using the RealVNC application which is available on mobile, Windows, or Linux.
 
 ![vnc_config](raspberry_pi_vnc.png)
 
-### Using Audacity
+#### Using Audacity
 
 After powering up the scanner and setting the volume to about half way and adjusting the squelch, open up Audacity. Click on the “Click to Start Monitoring” window and you’ll see the VU meter fluctuate based on the noise received from the scanner. Take note of how high the noise peaks so you can set the recording threshold appropriately.
 
