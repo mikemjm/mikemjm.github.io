@@ -107,7 +107,7 @@ The container is now created and started, you can verify by issuing the followin
 ```bash
 docker ps
 ```
-Verify you can access Pi-Hole's dashboard locally [http://HostIP/admin/](http://yourhostip/admin)
+Verify you can access Pi-Hole's dashboard locally [http://HostIP/admin](http://yourhostip/admin)
 
 #### Step 3: Installing Wireguard inside another Docker container
 
