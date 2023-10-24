@@ -113,7 +113,7 @@ Verify you can access Pi-Hole's dashboard locally, http://hostIP/admin
 
 Now we need to setup a VPN server so we can access our private network remotely. We'll be using [LinuxServer's](https://hub.docker.com/r/linuxserver/wireguard) Docker image.
 
-Paste the following contents into a new file on your host, make sure to save it with extension **.yml**. Be sure to make the necessary changes to suit your needs.
+Paste the following contents into a new file on your host, save it with extension **.yml**. Be sure to make the necessary changes to suit your needs.
 
 ```yaml
 services:
@@ -163,7 +163,7 @@ networks:
 
 *Note the **"PEERDNS"** value in the above configuration, it's the IP address of the Pi-Hole container.*
 
-As you can see in the configuration, the WireGuard container will be assigned to the same network as the Pi-Hole container and will always be assigned the IP address of **172.50.0.3** and a gateway of **172.50.0.1**
+Per the network configuration, the WireGuard container will be assigned to the same network as the Pi-Hole container and will always be assigned the IP address of **172.50.0.3** and a gateway of **172.50.0.1**
 
 ##### Create and run the container
 
@@ -201,9 +201,9 @@ Here is what that looks like on my EdgeRouter
 
 ![port_forward](port_forward.png)
 
-#### Step 5: Copy WireGuard peer configuartions to your mobile devices
+#### Step 5: Copy WireGuard peer configurations to your mobile devices
 
-Wireguard has a cool built in feature that will generate a QR code for each peer that you can scan with your mobile devices.
+Wireguard has a cool built in feature that will generate a QR code for each peer that you can scan with your mobile device.
 
 ```bash
 sudo docker exec -it wireguard /app/show-peer peer1 #in this case we used peer1 and peer2 when we created the container
@@ -213,7 +213,7 @@ A QR code should be displayed for "peer1"
 
 #### Note
 
-An additional setting needs to be changed in Pi-Hole's DNS settings that will allow DNS queries from *all origins*
+An additional setting needs to be changed in Pi-Hole's DNS tab that will allow DNS queries from *all origins*
 
 ![pihole_dns](dns_settings.png)
 
