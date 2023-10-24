@@ -225,4 +225,4 @@ Be sure to click the **save** button at the bottom of the page
 
 ![pihole_queries](query_page.png)
 
-### Success, Pi-Hole is filtering DNS queries it's receiving from WireGuard!
+### Success, Pi-Hole is filtering DNS queries it's receiving from WireGuard! 
