@@ -107,4 +107,11 @@ The container is now created and started, you can verify by issuing the followin
 ```bash
 docker ps
 ```
+Verify you can access Pi-Hole's dashboard locally [http://HostIP/admin/](http://HostIP/admin)
+
+#### Step 3: Installing Wireguard inside another Docker container
+
+Now we need to setup a VPN server so we can access our private network remotely. We'll be using [LinuxServer's](https://hub.docker.com/r/linuxserver/wireguard) Docker image.
+
+Paste the following contents into a new file on your host, make sure to save it with extension **.yml**. Be sure to make the necessary changes to suit your needs.
 
