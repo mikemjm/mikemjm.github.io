@@ -22,3 +22,14 @@ If you're reading this blog, theres a good chance you already know about Pi-Hole
 ```bash
 sudo apt install docker docker-compose
 ```
+
+You may need to start and enable the service depending on your OS
+
+```bash
+systemctl start docker.service
+systemctl enable docker.service
+```
+
+#### Step 2: Installing Pi-Hole inside a Docker container
+
+Head on over to [Pi-Hole's Docker Hub](https://hub.docker.com/r/pihole/pihole) and copy the docker-compose contents into a new **.yml** file on your host. Be sure to make the necessary changes to suit your needs.
