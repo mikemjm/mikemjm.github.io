@@ -83,3 +83,28 @@ Create the container
 ```bash
 docker-compose -f pihole-docker.yml up -d
 ```
+
+```bash
+Creating network "mike_network" with driver "bridge"
+Pulling pihole (pihole/pihole:latest)...
+latest: Pulling from pihole/pihole
+85e50d2242ce: Pull complete
+205b3bcb04a1: Pull complete
+4f4fb700ef54: Pull complete
+efc47020d282: Pull complete
+3a438191e6f2: Pull complete
+a090ee43303f: Pull complete
+10002067986b: Pull complete
+30034a05debf: Pull complete
+d61aa1a24eb4: Pull complete
+Digest: sha256:562766abc805d5005bb2d2aa5d4bbf2d9b347380b1ea4504fb59b2100500f672
+Status: Downloaded newer image for pihole/pihole:latest
+Creating pihole ... done
+```
+
+The container is now created and started, you can verify by issuing the following command
+
+```bash
+docker ps
+```
+
