@@ -115,3 +115,112 @@ Now we need to setup a VPN server so we can access our private network remotely.
 
 Paste the following contents into a new file on your host, make sure to save it with extension **.yml**. Be sure to make the necessary changes to suit your needs.
 
+```yaml
+services:
+  wireguard:
+    image: lscr.io/linuxserver/wireguard:latest
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+      - SERVERURL= #YOUR WAN/EXTERNAL IP ADDRESS HERE
+      - SERVERPORT=51820
+      - PEERS=peer1,peer2 #NAMES OF MOBILE DEVICES
+      - PEERDNS=172.50.0.2 ###THE IP ADDRESS WE ASSIGNED THE PIHOLE CONTAINER
+      - INTERNAL_SUBNET=10.13.13.0 #optional
+      - ALLOWEDIPS=0.0.0.0/0 #optional
+      - LOG_CONFS=true #optional
+    volumes:
+      - /home/$USERNAME/docker/wireguard/config:/config #LOCAL WIREGUARD CONFIG LOCATION
+      - /lib/modules:/lib/modules
+    ports:
+      - 51820:51820/udp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
+
+### EXTRA NETWORK CONFIGURATION TO SETUP A 
+### STATIC IP ADDRESS FOR THE WIREGUARD DOCKER
+### CONTAINER ###
+
+    networks:
+      network:
+        ipv4_address: 172.50.0.3
+
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.50.0.0/16
+          gateway: 172.50.0.1
+
+```
+
+*Note the **"PEERDNS"** value in the above configuration, it's the IP address of the Pi-Hole container.*
+
+As you can see in the configuration, the WireGuard container will be assigned to the same network as the Pi-Hole container and will always be assigned the IP address of **172.50.0.3** and a gateway of **172.50.0.1**
+
+##### Create and run the container
+
+```bash
+sudo docker-compose -f wireguard-compose.yml up -d
+```
+
+```bash
+command with the --remove-orphans flag to clean it up.
+Pulling wireguard (lscr.io/linuxserver/wireguard:latest)...
+latest: Pulling from linuxserver/wireguard
+6dfc71ecd6ee: Pull complete
+07a0e16f7be1: Pull complete
+efbf43c6653c: Pull complete
+757becd0c00b: Pull complete
+7afeddcdf0d2: Pull complete
+1abddf4bd11b: Pull complete
+6e047b85f8c9: Pull complete
+Digest: sha256:ce2327480d1710c1a2baea7118c6c6716524fb478c3bd37ec654a5d3259db868
+Status: Downloaded newer image for lscr.io/linuxserver/wireguard:latest
+Creating wireguard ... done
+```
+
+The container is now created and started, you can verify by issuing the following command
+
+```bash
+docker ps
+```
+
+#### Step 4: Port Forwarding
+
+Forward port **51820** to the host running your Docker containers
+
+Here is what that looks like on my EdgeRouter
+
+![port_forward](port_forward.png)
+
+#### Step 5: Copy WireGuard peer configuartions to your mobile devices
+
+Wireguard has a cool built in feature that will generate a QR code for each peer that you can scan with your mobile devices.
+
+```bash
+sudo docker exec -it wireguard /app/show-peer peer1 #in this case we used peer1 and peer2 when we created the container
+```
+
+A QR code should be displayed for "peer1"
+
+#### Note
+
+An additional setting needs to be changed in Pi-Hole's DNS settings that will allow DNS queries from *all origins*
+
+![pihole_dns](dns_settings.png)
+
+Be sure to click the **save** button at the bottom of the page
+
+#### Step 6: Verify Pi-Hole is receiving DNS requests from WireGuard
+
+![pihole_queries](query_page.png)
+
+### Success, Pi-Hole is filtering DNS queries it's receiving from WireGuard!
