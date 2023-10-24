@@ -72,7 +72,6 @@ networks:
       config:
         - subnet: 172.50.0.0/16
           gateway: 172.50.0.1
-
 ```
 
 I've added additional network settings at the end of the configuration that will setup a new bridged network and a static IP address for the docker container running Pi-Hole. We don't want the IP address of this container changing if the container or host is restarted. In this configuration the container will always bee assigned the IP address of **172.50.0.2** and a gateway of **172.50.0.1**
@@ -83,7 +82,7 @@ Create the container
 
 ```bash
 docker-compose -f pihole-docker.yml up -d
-``````
+```
 
 ```bash
 Creating network "mike_network" with driver "bridge"
@@ -101,7 +100,7 @@ d61aa1a24eb4: Pull complete
 Digest: sha256:562766abc805d5005bb2d2aa5d4bbf2d9b347380b1ea4504fb59b2100500f672
 Status: Downloaded newer image for pihole/pihole:latest
 Creating pihole ... done
-``````
+```
 
 The container is now created and started, you can verify by issuing the following command
 
@@ -225,4 +224,4 @@ Be sure to click the **save** button at the bottom of the page
 
 ![pihole_queries](query_page.png)
 
-### Success, Pi-Hole is filtering DNS queries it's receiving from WireGuard! 
+### Success, Pi-Hole is filtering DNS queries it's receiving from WireGuard!
