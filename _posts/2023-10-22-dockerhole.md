@@ -33,3 +33,43 @@ systemctl enable docker.service
 #### Step 2: Installing Pi-Hole inside a Docker container
 
 Head on over to [Pi-Hole's Docker Hub](https://hub.docker.com/r/pihole/pihole) and copy the docker-compose contents into a new **.yml** file on your host. Be sure to make the necessary changes to suit your needs.
+
+```yaml
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
+      - "80:80/tcp"
+    environment:
+      TZ: 'America/Chicago'
+      # WEBPASSWORD: 'set a secure password here or it will be random'
+    # Volumes store your data between container upgrades
+    volumes:
+      - './etc-pihole:/etc/pihole'
+      - './etc-dnsmasq.d:/etc/dnsmasq.d'
+    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+    cap_add:
+      - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
+    restart: unless-stopped
+
+### EXTRA NETWORK CONFIGURATION TO SETUP A 
+### STATIC IP ADDRESS FOR THE PIHOLE DOCKER
+### CONTAINER ###
+
+    networks:
+      network:
+        ipv4_address: 172.50.0.2
+
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.50.0.0/16
+          gateway: 172.50.0.1
+```
