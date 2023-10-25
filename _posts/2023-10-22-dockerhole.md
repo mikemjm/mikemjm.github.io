@@ -210,6 +210,8 @@ sudo docker exec -it wireguard /app/show-peer Mike_iPhone #in this case we used 
 
 A QR code should be displayed for "Mike_iPhone"
 
+If you are unable to use QR codes, client configuration files are saved at the location specified in the docker-compose configuration file for WireGuard. In this case it's */home/$USERNAME/docker/wireguard/config*
+
 #### Notes
 
 * ### <span style="color:red">An additional setting needs to be changed in Pi-Hole's DNS tab that will allow DNS queries from *all origins*</span>
