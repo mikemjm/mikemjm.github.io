@@ -129,7 +129,7 @@ services:
       - TZ=America/Chicago
       - SERVERURL= #YOUR WAN/EXTERNAL IP ADDRESS HERE
       - SERVERPORT=51820
-      - PEERS=peer1,peer2 #NAMES OF MOBILE DEVICES
+      - PEERS=Mike_iPhone,Mike_Laptop #NAMES OF MOBILE DEVICES
       - PEERDNS=172.50.0.2 ###THE IP ADDRESS WE ASSIGNED THE PIHOLE CONTAINER
       - INTERNAL_SUBNET=10.13.13.0 #optional
       - ALLOWEDIPS=0.0.0.0/0 #optional
@@ -206,18 +206,20 @@ Here is what that looks like on my EdgeRouter
 Wireguard has a cool built in feature that will generate a QR code for each peer that you can scan with your mobile device.
 
 ```bash
-sudo docker exec -it wireguard /app/show-peer peer1 #in this case we used peer1 and peer2 when we created the container
+sudo docker exec -it wireguard /app/show-peer Mike_iPhone #in this case we used peer1 and peer2 when we created the container
 ```
 
-A QR code should be displayed for "peer1"
+A QR code should be displayed for "Mike_iPhone"
 
-#### Note
+#### Notes
 
-An additional setting needs to be changed in Pi-Hole's DNS tab that will allow DNS queries from *all origins*
+* ### <span style="color:red">An additional setting needs to be changed in Pi-Hole's DNS tab that will allow DNS queries from *all origins*</span>
 
 ![pihole_dns](dns_settings.png)
 
-Be sure to click the **save** button at the bottom of the page
+*Be sure to click the **save** button at the bottom of the page*
+
+* ### <span style="color:red">If you are having connectivity issues or slow speeds try setting the MTU on the client to 1300 (I find that this helps a lot when you're on a cellular network)</span>
 
 #### Step 6: Verify Pi-Hole is receiving DNS requests from WireGuard
 
