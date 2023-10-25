@@ -136,4 +136,4 @@ You can verify that your files are being stored on your encrypted drive by navig
 cd /home/USERNAME/docker/nextcloud/crypt_data/USERNAME/files/
 ```
 
-That’s it, you’ve successfully installed Nextcloud with Docker and have a LUKS encrypted storage folder for all of your files!
+You’ve successfully installed Nextcloud with Docker and have a LUKS encrypted storage folder for all of your files!
