@@ -17,18 +17,23 @@ If you're reading this blog, theres a good chance you already know about Pi-Hole
 * Step 4: Forward the port for WireGuard on your firewall/router
 * Step 5: Copy WireGuard peer configuartions to your mobile devices
 
+---
+
 #### Step 1: Download and install Docker and Docker-Compose for your OS (I will be using Raspbian).
 
 ```bash
 sudo apt install docker docker-compose
 ```
 
-You may need to start and enable the service depending on your OS
+> You may need to start and enable the service depending on your OS
+{: .prompt-tip }
 
 ```bash
 systemctl start docker.service
 systemctl enable docker.service
 ```
+
+---
 
 #### Step 2: Installing Pi-Hole inside a Docker container
 
@@ -108,6 +113,8 @@ The container is now created and started, you can verify by issuing the followin
 docker ps
 ```
 Verify you can access Pi-Hole's dashboard locally, http://hostIP/admin
+
+---
 
 #### Step 3: Installing Wireguard inside another Docker container
 
@@ -192,6 +199,8 @@ The container is now created and started, you can verify by issuing the followin
 docker ps
 ```
 
+---
+
 #### Step 4: Port Forwarding
 
 Forward port **51820** to the host running your Docker containers
@@ -199,6 +208,8 @@ Forward port **51820** to the host running your Docker containers
 Here is what that looks like on my EdgeRouter
 
 ![port_forward](port_forward.png)
+
+---
 
 #### Step 5: Copy WireGuard peer configurations to your mobile devices
 
@@ -212,18 +223,22 @@ A QR code should be displayed for "Mike_iPhone"
 
 If you are unable to use QR codes, client configuration files are saved at the location specified in the docker-compose configuration file for WireGuard. In this case it's */home/$USERNAME/docker/wireguard/config*
 
-#### Notes
+---
 
-* ### <span style="color:red">An additional setting needs to be changed in Pi-Hole's DNS tab that will allow DNS queries from *all origins*</span>
+> An additional setting needs to be changed in Pi-Hole's DNS tab to accept DNS queries from *all origins*
+{: .prompt-warning }
 
 ![pihole_dns](dns_settings.png)
 
 *Be sure to click the **save** button at the bottom of the page*
 
-* ### <span style="color:red">If you are having connectivity issues or slow speeds try setting the MTU on the client to 1300 (I find that this helps a lot when you're on a cellular network)</span>
+> If you are having connectivity issues or slow speeds try setting the MTU on the client to 1300 (I find that this helps a lot when you're on a cellular network
+{: .prompt-tip }
+
+---
 
 #### Step 6: Verify Pi-Hole is receiving DNS requests from WireGuard
 
 ![pihole_queries](query_page.png)
 
-### Success, Pi-Hole is filtering DNS queries it's receiving from WireGuard! 
+### Success, Pi-Hole is filtering DNS queries it's receiving from WireGuard!
