@@ -1,0 +1,16 @@
+2023-12-11 07:44:13.613 [info] 
+
+
+
+
+2023-12-11 07:44:13.613 [info] Extension host agent started.
+2023-12-11 07:44:13.615 [info] Started initializing default profile extensions in extensions installation folder. file:///config/.openvscode-server/extensions
+2023-12-11 07:44:13.685 [info] Completed initializing default profile extensions in extensions installation folder. file:///config/.openvscode-server/extensions
+2023-12-11 07:44:36.198 [info] [172.18.0.1][c325a752][ExtensionHostConnection] New connection established.
+2023-12-11 07:44:36.203 [info] [172.18.0.1][64ad20fe][ManagementConnection] New connection established.
+2023-12-11 07:44:36.343 [info] [172.18.0.1][c325a752][ExtensionHostConnection] <223> Launched Extension Host Process.
+2023-12-11 07:44:45.490 [info] [172.18.0.1][64ad20fe][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2023-12-11 07:44:45.519 [info] [172.18.0.1][c325a752][ExtensionHostConnection] <223> Extension Host Process exited with code: 0, signal: null.
+2023-12-11 07:44:47.060 [info] [172.18.0.1][9eadef99][ExtensionHostConnection] New connection established.
+2023-12-11 07:44:47.089 [info] [172.18.0.1][9eadef99][ExtensionHostConnection] <260> Launched Extension Host Process.
+2023-12-11 07:44:47.093 [info] [172.18.0.1][abf4b093][ManagementConnection] New connection established.
