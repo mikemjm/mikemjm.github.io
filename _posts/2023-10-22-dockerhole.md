@@ -107,7 +107,7 @@ Status: Downloaded newer image for pihole/pihole:latest
 Creating pihole ... done
 ```
 
-The container is now created and started, you can verify by issuing the following command
+The container is now created and started, verify by issuing the following command
 
 ```bash
 docker ps
