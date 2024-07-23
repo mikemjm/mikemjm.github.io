@@ -13,4 +13,4 @@ I remember getting my first computer when I was still very young, the popular 28
 
 On Mike’s Base, you will find my ever growing library of home brew projects ranging from all things computers, networking, and automotive. I hope these shared projects will help and inspire others to become tinkers and explorers and to serve a guide to come up with your own projects as well.
 
-–Mike
+–Mike M
