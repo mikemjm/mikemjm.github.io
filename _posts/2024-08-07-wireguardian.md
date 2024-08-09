@@ -7,7 +7,7 @@ tags: [security,raspberry_pi,docker,adguard,wireguard]
 
 ![featured_image](/assets/adguardian/adguardian.jpg)
 
-### Similar to Docker-Hole, 'Adguardian' is easier to setup and replaces Pi-Hole with AdGuard Home!
+### Similar to [Docker-Hole](/posts/dockerhole/), WireGuardian is easier to setup and replaces Pi-Hole with AdGuard Home!
 
 Enjoy an ad free experience at home and on the go with with WireGuard + AdGuard Home. Easy to setup with just one docker compose file, follow along below!
 
@@ -123,12 +123,12 @@ networks:
           gateway: 172.50.0.1
 ```
 
-* Save the file, E.g. adguardian-docker.yml
+* Save the file, E.g. wireguardian-docker.yml
 
 Create the container
 
 ```bash
-docker-compose -f adguardian-docker.yml up -d
+docker-compose -f wireguardian-docker.yml up -d
 ```
 
 ```bash
@@ -235,7 +235,7 @@ docker image rm image_id
 Run the docker-compose file again, it will pull the new image and start the container, files are persistent and all settings will remain.
 
 ```bash
-docker-compose -f adguardian-docker.yml up -d
+docker-compose -f wireguardian-docker.yml up -d
 ```
 
 Enjoy an ad free internet!
